@@ -5,14 +5,12 @@
 //  Created by Vincent Saluzzo on 29/03/2019.
 //  Copyright © 2019 Vincent Saluzzo. All rights reserved.
 //
-
 import UIKit
 
 class ViewController: UIViewController {
     
     // IBOutlet
     @IBOutlet weak var textView: UITextView!
-    
     @IBOutlet weak var resetTextButton: UIButton!
     
     let calculator = Calculator()
@@ -58,14 +56,11 @@ class ViewController: UIViewController {
         resetTextButton.setTitle("AC", for: .normal)
         textView.text = "0"
     }
-    
-    
-    
 }
 
 extension ViewController: DisplayDelegate {
     func presentAlert(message: String) {
-        let alertVC = UIAlertController(title: "Zéro !", message: message, preferredStyle: .alert)
+        let alertVC = UIAlertController(title: "Erreur !", message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }

@@ -13,9 +13,7 @@ protocol DisplayDelegate: class {
 }
 
 class Calculator {
-    
     weak var delegateDisplay: DisplayDelegate?
-    
     var textCalculator = "" {
         didSet {
             notificationDisplay(textCalculator: textCalculator)
@@ -42,6 +40,11 @@ class Calculator {
         return elements.firstIndex(of: "=") != nil
     }
     
+    var divideByZero: Bool {
+        return !textCalculator.contains("/ 0")
+    }
+    
+    // MARK: Functions
     // Send notification to viewController
     func notificationDisplay(textCalculator: String) {
         delegateDisplay?.presentDisplay(text: textCalculator)
@@ -101,8 +104,14 @@ class Calculator {
             delegateDisplay?.presentAlert(message: "Ajouter un opérateur et un autre chiffre !")
             return
         }
-        let result = NSExpression(format: textCalculator).expressionValue(with: nil, context: nil) ?? 0
+        guard divideByZero else {
+            delegateDisplay?.presentAlert(message: "Division par zéro impossible !")
+            textCalculator = "Erreur"
+            return
+        }
+        guard let result = NSExpression(format: textCalculator).expressionValue(with: nil, context: nil) else { return }
         textCalculator = (textCalculator + " = \(result)")
+
     }
     
     // Reset function
