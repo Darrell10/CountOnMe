@@ -97,15 +97,6 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertEqual(calculator.textCalculator, "")
     }
     
-    func test7(){
-        calculator.tappedNumberButton(numberText: "2")
-        calculator.tappedDivideButton()
-        calculator.tappedNumberButton(numberText: "2")
-        calculator.operationResult()
-        calculator.tappedNumberButton(numberText: "2")
-        XCTAssertEqual(calculator.textCalculator, "2")
-    }
-    
     
     // Test calcul soustraction
     func testGivenElementsIsEmpty_WhenAdding13Minus7_ThenResultIsEqualTo6(){
@@ -113,7 +104,7 @@ class CalculatorTestCase: XCTestCase {
         calculator.tappedSubstractionButton()
         calculator.tappedNumberButton(numberText: "7")
         calculator.operationResult()
-        XCTAssertEqual(calculator.textCalculator, "13 - 7 = 6")
+        XCTAssertEqual(calculator.textCalculator, "= 6")
     }
     
     
@@ -126,7 +117,7 @@ class CalculatorTestCase: XCTestCase {
         calculator.tappedMultiplicateButton()
         calculator.tappedNumberButton(numberText: "4")
         calculator.operationResult()
-        XCTAssertEqual(calculator.textCalculator, "2 + 3 * 4 = 14")
+        XCTAssertEqual(calculator.textCalculator, "= 14")
     }
     
     // Test boutton AC
@@ -134,6 +125,24 @@ class CalculatorTestCase: XCTestCase {
     func testGivenElementsIs25Plus7_WhenClearTextCalculator_ThenTextCalculatorIsEmpty(){
         calculator.resetButton()
         XCTAssertEqual(calculator.textCalculator, "")
+    }
+    
+    // Test Division par 0
+    func testGivenWhenTextCalculatorIsEmpty_WhenAdding10DivideByO_ThenTextCalculatorIsEmpty(){
+        calculator.tappedNumberButton(numberText: "10")
+        calculator.tappedDivideButton()
+        calculator.tappedNumberButton(numberText: "0")
+        calculator.operationResult()
+        XCTAssertEqual(calculator.textCalculator, "")
+    }
+    
+    func test5(){
+        calculator.tappedNumberButton(numberText: "3")
+        calculator.tappedMultiplicateButton()
+        calculator.tappedNumberButton(numberText: "4")
+        calculator.operationResult()
+        calculator.tappedNumberButton(numberText: "6")
+        XCTAssertEqual(calculator.textCalculator, "6")
     }
 
 }

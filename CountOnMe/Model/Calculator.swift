@@ -14,6 +14,7 @@ protocol DisplayDelegate: class {
 
 class Calculator {
     weak var delegateDisplay: DisplayDelegate?
+    
     var textCalculator = "" {
         didSet {
             notificationDisplay(textCalculator: textCalculator)
@@ -37,7 +38,8 @@ class Calculator {
     }
     
     var expressionHaveResult: Bool {
-        return elements.firstIndex(of: "=") != nil
+        //return elements.firstIndex(of: "=") != nil
+        return textCalculator.contains("= ")
     }
     
     var divideByZero: Bool {
@@ -94,6 +96,19 @@ class Calculator {
         }
     }
     
+    private func convertStringToFloat(){
+        var stringTmp = [String]()
+        for element in elements {
+            if element == "+" || element == "-" || element == "/" || element == "*" {
+                stringTmp.append(element)
+            } else {
+                let floatNumber = String(format: "%.2f", (element as NSString).floatValue)
+                stringTmp.append(floatNumber)
+            }
+        }
+        textCalculator = stringTmp.joined(separator: " ")
+    }
+    
     // Result Function
     func operationResult(){
         guard expressionIsCorrect else {
@@ -106,18 +121,21 @@ class Calculator {
         }
         guard divideByZero else {
             delegateDisplay?.presentAlert(message: "Division par zéro impossible !")
-            textCalculator = "Erreur"
+            textCalculator = ""
             return
         }
+        convertStringToFloat()
         guard let result = NSExpression(format: textCalculator).expressionValue(with: nil, context: nil) else { return }
-        textCalculator = (textCalculator + " = \(result)")
-
+        
+        textCalculator = ("= \(result)")
+        
     }
     
     // Reset function
     func resetButton() {
         textCalculator = ""
     }
+    
 }
 
 
