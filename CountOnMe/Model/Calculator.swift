@@ -7,11 +7,6 @@
 
 import Foundation
 
-protocol DisplayDelegate: class {
-    func presentDisplay(text: String)
-    func presentAlert(message: String)
-}
-
 class Calculator {
     weak var delegateDisplay: DisplayDelegate?
     
@@ -39,7 +34,7 @@ class Calculator {
     
     var expressionHaveResult: Bool {
         //return elements.firstIndex(of: "=") != nil
-        return textCalculator.contains("= ")
+        return textCalculator.contains("=")
     }
     
     var divideByZero: Bool {
@@ -96,6 +91,7 @@ class Calculator {
         }
     }
     
+    // Function to convert String To Float
     private func convertStringToFloat(){
         var stringTmp = [String]()
         for element in elements {
@@ -128,14 +124,18 @@ class Calculator {
         guard let result = NSExpression(format: textCalculator).expressionValue(with: nil, context: nil) else { return }
         
         textCalculator = ("= \(result)")
-        
     }
-    
     // Reset function
     func resetButton() {
         textCalculator = ""
     }
     
+}
+
+// Display Protocol
+protocol DisplayDelegate: class {
+    func presentDisplay(text: String)
+    func presentAlert(message: String)
 }
 
 

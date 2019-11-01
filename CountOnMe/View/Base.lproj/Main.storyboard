@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eqK-jh-KKu">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eqK-jh-KKu">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="0" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="T2H-yn-nBB">
+                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="0" textAlignment="right" translatesAutoresizingMaskIntoConstraints="NO" id="T2H-yn-nBB">
                                 <rect key="frame" x="16" y="64" width="343" height="338"/>
                                 <color key="backgroundColor" red="0.24527746819999999" green="0.53481305040000005" blue="0.58749136739999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -175,9 +175,9 @@
                                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <state key="normal" title="+">
+                                        <state key="normal" image="icons8-plus">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                         </state>
                                         <connections>
                                             <action selector="tappedAdditionButton:" destination="eqK-jh-KKu" eventType="touchUpInside" id="V0J-eg-vQK"/>
@@ -188,7 +188,7 @@
                                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <state key="normal" title="-">
+                                        <state key="normal" image="icons8-minus2">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
@@ -201,7 +201,7 @@
                                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <state key="normal" title="*">
+                                        <state key="normal" image="icons8-multiply">
                                             <color key="titleColor" red="1" green="0.99997597930000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
@@ -214,7 +214,7 @@
                                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <state key="normal" title="/">
+                                        <state key="normal" image="icons8-divide">
                                             <color key="titleColor" red="1" green="0.99997597930000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
@@ -227,7 +227,7 @@
                                         <color key="backgroundColor" red="1" green="0.83234566450000003" blue="0.47320586440000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                                         <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <state key="normal" title="=">
+                                        <state key="normal" image="icons8-equal_sign">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
@@ -266,4 +266,11 @@
             <point key="canvasLocation" x="87" y="220"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icons8-divide" width="25" height="25"/>
+        <image name="icons8-equal_sign" width="25" height="25"/>
+        <image name="icons8-minus2" width="25" height="25"/>
+        <image name="icons8-multiply" width="25" height="25"/>
+        <image name="icons8-plus" width="25" height="25"/>
+    </resources>
 </document>

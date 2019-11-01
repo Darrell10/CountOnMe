@@ -107,6 +107,7 @@
 		B679338D23450082002A4FA2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1FA43BDB224E569A00F565CB /* LaunchScreen.storyboard */,
 				1FA43BD6224E569900F565CB /* Main.storyboard */,
 			);
 			path = View;
@@ -124,7 +125,6 @@
 			isa = PBXGroup;
 			children = (
 				1FA43BDE224E569A00F565CB /* Info.plist */,
-				1FA43BDB224E569A00F565CB /* LaunchScreen.storyboard */,
 				1FA43BD2224E569900F565CB /* AppDelegate.swift */,
 				1FA43BD9224E569A00F565CB /* Assets.xcassets */,
 			);
@@ -407,7 +407,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.frederickport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -425,7 +425,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.frederickport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
