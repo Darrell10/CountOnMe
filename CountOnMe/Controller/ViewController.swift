@@ -10,11 +10,9 @@ import UIKit
 class ViewController: UIViewController {
     // MARK: - Property
     let calculator = Calculator()
-    
     // MARK: - IBOutlet
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var resetTextButton: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         calculator.delegateDisplay = self
@@ -22,7 +20,6 @@ class ViewController: UIViewController {
 }
 // MARK: - Action Button
 extension ViewController {
-    // View actions
     @IBAction func tappedNumberButton(_ sender: UIButton) {
         resetTextButton.setTitle("C", for: .normal)
         guard let numberText = sender.title(for: .normal) else { return }

@@ -66,7 +66,7 @@ extension Calculator {
         }
     }
     // Add Multiplicate Operand
-    func tappedMultiplicateButton(){
+    func tappedMultiplicateButton() {
         if canAddOperator {
             textCalculator.append(" * ")
         } else {
@@ -74,7 +74,7 @@ extension Calculator {
         }
     }
     // Add Divide Operand
-    func tappedDivideButton(){
+    func tappedDivideButton() {
         if canAddOperator {
             textCalculator.append(" / ")
         } else {
@@ -88,7 +88,7 @@ extension Calculator {
 }
 // MARK: - Result Function
 extension Calculator {
-    func operationResult(){
+    func operationResult() {
         guard expressionIsCorrect else {
             delegateDisplay?.presentAlert(message: "Entrez une expression correcte !")
             return
@@ -99,7 +99,7 @@ extension Calculator {
         }
         guard divideByZero else {
             delegateDisplay?.presentAlert(message: "Division par zéro impossible !")
-            textCalculator = ""
+            textCalculator = "= Error"
             return
         }
         convertStringToFloat()
@@ -107,7 +107,7 @@ extension Calculator {
         textCalculator = ("= \(result)")
     }
     // Function to convert String To Float
-    private func convertStringToFloat(){
+    private func convertStringToFloat() {
         var stringTmp = [String]()
         for element in elements {
             if element == "+" || element == "-" || element == "/" || element == "*" {
@@ -125,5 +125,3 @@ protocol DisplayDelegate: class {
     func presentDisplay(text: String)
     func presentAlert(message: String)
 }
-
-
