@@ -17,72 +17,59 @@ class CalculatorTestCase: XCTestCase {
         calculator = Calculator()
     }
     
-    // MARK: Ajout des nombres
-    
-    // Test ajout de nombres
+// MARK: - add numbers
     func testGivenElementsIsEmpty_WhenAdding23_ThenElementsContains23(){
         calculator.tappedNumberButton(numberText: "23")
-        XCTAssert(calculator.elements.contains("23"))
+        XCTAssertEqual(calculator.textCalculator, "23")
     }
     
-    // MARK: Test canAddOperator
+// MARK: - Test canAddOperator
     
-    // Test possibilité d'ajouter un operateur
+    // Test can add an operand
     func testGivenTestCalculatorIsEmpty_whenAdding25_ThenCanAddOperatorIsTrue() {
         calculator.textCalculator = "25"
         XCTAssertTrue(calculator.canAddOperator)
     }
     
-    // Test ajout Opérateur quand un opérateur a déja été saisie
-    func testGivenTestCalculatorIsEmpty_WhenAddingMinusOperator_ThenCanAddOperatorIsFalse(){
+    // Test add operand when operand was previously added
+    func testGivenTestCalculatorHaveMinusOperand_WhenAddingMinusOperator_ThenCanAddOperatorIsFalse(){
         calculator.textCalculator = "-"
+        calculator.tappedSubstractionButton()
         XCTAssertFalse(calculator.canAddOperator)
        }
-    
-    // MARK: Ajout des opérateurs
-    
-    // Test ajout Opérateur addition
-    func testGivenTextCalculatorIsEmpty_WhenAddingPlusOperator_ThenTextCalculatorEqualPlusOperator(){
-        calculator.tappedAdditionButton()
-        XCTAssertEqual(calculator.textCalculator, " + ")
+// MARK: - Test expressionHaveResult
+    func testGivenWhenTextCalculatorHaveResult_WhenAdding5_ThenTextCalculatorIsEqual5(){
+        calculator.textCalculator = "= 6"
+        calculator.tappedNumberButton(numberText: "5")
+        XCTAssertEqual(calculator.textCalculator, "5")
+    }
+// MARK: - expressionHaveEnoughElement
+    func testGivenTextCalculatorIsEmpty_WhenAddingEqual_ThenExpressionHaveEnoughElementIsFalse(){
+        calculator.operationResult()
+        XCTAssertFalse(calculator.expressionHaveEnoughElement)
     }
     
+// MARK: - Ajout des opérateurs
+    // Test add Plus Operand
     func testGivenTextCalculatorEqualPlus_WhenAddingPlusOperator_ThenTextCalculatorEqualPLus(){
         calculator.tappedAdditionButton()
         calculator.tappedAdditionButton()
         XCTAssertEqual(calculator.textCalculator, " + ")
     }
-    
-    // Test ajout Opérateur soustraction
-    func testGivenTextCalculatorIsEmpty_WhenAddingMinusOperator_ThenTextCalculatorEqualMinusOperator(){
-        calculator.tappedSubstractionButton()
-        XCTAssertEqual(calculator.textCalculator, " - ")
-    }
-    
+    // Test add Minus Operand
     func testGivenTextCalculatorEqualMinus_WhenAddingMinusOperator_ThenTextCalculatorEqualMinus(){
         calculator.tappedSubstractionButton()
         calculator.tappedSubstractionButton()
         XCTAssertEqual(calculator.textCalculator, " - ")
     }
     
-    // Test ajout Opérateur multiplication
-    func testGivenTextCalculatorIsEmpty_WhenAddingMultiplicateOperator_ThenTextCalculatorContainMultiplicateOperator(){
-        calculator.tappedMultiplicateButton()
-        XCTAssertEqual(calculator.textCalculator, " * ")
-    }
-    
+    // Test add Multiplicate Operand
     func testGivenTextCalculatorEqualMultiplicate_WhenAddingMultiplicateOperator_ThenTextCalculatorEqualMultiplicate(){
         calculator.tappedMultiplicateButton()
         calculator.tappedMultiplicateButton()
         XCTAssertEqual(calculator.textCalculator, " * ")
     }
-    
-    // Test ajout Opérateur division
-    func testGivenTextCalculatorIsEmpty_WhenAddingDivideOperator_ThenTextCalculatorContainDivideOperator(){
-        calculator.tappedDivideButton()
-        XCTAssertEqual(calculator.textCalculator, " / ")
-    }
-    
+    // Test add Divide Operand
     func testGivenTextCalculatorEqualDivide_WhenAddingDivideOperator_ThenTextCalculatorEqualDivide(){
         calculator.tappedDivideButton()
         calculator.tappedDivideButton()
@@ -90,26 +77,8 @@ class CalculatorTestCase: XCTestCase {
         XCTAssertEqual(calculator.textCalculator, " / ")
     }
     
-    // MARK: operationResult
-    
-    func testGivenTextCalculatorIsEmpty_WhenAddingEqual_ThenTextcalculatorIsEmpty(){
-        calculator.operationResult()
-        XCTAssertEqual(calculator.textCalculator, "")
-    }
-    
-    
-    // Test calcul soustraction
-    func testGivenTextCalculatorIsEmpty_WhenAdding13Minus7_ThenTextCalculatorIsEqualTo6(){
-        calculator.tappedNumberButton(numberText: "13")
-        calculator.tappedSubstractionButton()
-        calculator.tappedNumberButton(numberText: "7")
-        calculator.operationResult()
-        XCTAssertEqual(calculator.textCalculator, "= 6")
-    }
-    
-    
-    // test calcul priorité
-    
+// MARK: - operationResult
+    // test calculate with priority
     func testGivenTextCalculatorIsEmpty_WhenAdding2Plus3Multiplicate4_ThenTextCalculatorIsEqualTo14(){
         calculator.tappedNumberButton(numberText: "2")
         calculator.tappedAdditionButton()
@@ -119,27 +88,19 @@ class CalculatorTestCase: XCTestCase {
         calculator.operationResult()
         XCTAssertEqual(calculator.textCalculator, "= 14")
     }
-    
-    // Test boutton AC
-    
-    func testGivenTextCalculatorIs25Plus7_WhenClearTextCalculator_ThenTextCalculatorIsEmpty(){
-        calculator.resetButton()
-        XCTAssertEqual(calculator.textCalculator, "")
-    }
-    
-    // Test Division par 0
-    func testGivenWhenTextCalculatorIsEmpty_WhenAdding10DivideByO_ThenTextCalculatorIsEmpty(){
+    // Test Divide by 0
+    func testGivenWhenTextCalculatorIsEmpty_WhenAdding10DivideByO_ThenDivideByZeroIsTrue(){
         calculator.tappedNumberButton(numberText: "10")
         calculator.tappedDivideButton()
         calculator.tappedNumberButton(numberText: "0")
         calculator.operationResult()
-        XCTAssertEqual(calculator.textCalculator, "")
+        XCTAssertTrue(calculator.divideByZero)
     }
     
-    func testGivenWhenTextCalculatorHaveResult_WhenAdding6_ThenTextCalculatorIsEqual6(){
-        calculator.operationResult()
-        calculator.tappedNumberButton(numberText: "6")
-        XCTAssertEqual(calculator.textCalculator, "6")
+// MARK: - Test boutton AC
+    func testGivenTextCalculatorIs25Plus7_WhenClearTextCalculator_ThenTextCalculatorIsEmpty(){
+        calculator.resetButton()
+        XCTAssertEqual(calculator.textCalculator, "")
     }
 
 }
