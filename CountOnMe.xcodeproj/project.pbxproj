@@ -13,6 +13,7 @@
 		1FA43BDA224E569A00F565CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FA43BD9224E569A00F565CB /* Assets.xcassets */; };
 		1FA43BDD224E569A00F565CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FA43BDB224E569A00F565CB /* LaunchScreen.storyboard */; };
 		B6141425235216D3007FB4EF /* CalculatorTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6141424235216D3007FB4EF /* CalculatorTestCase.swift */; };
+		B69DFC5423709294009A1774 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = B69DFC5323709294009A1774 /* String.swift */; };
 		B6CB758F2346549E00393735 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6CB758E2346549E00393735 /* Calculator.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +38,7 @@
 		B614141A23521656007FB4EF /* CountOnMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountOnMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B614141E23521656007FB4EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B6141424235216D3007FB4EF /* CalculatorTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTestCase.swift; sourceTree = "<group>"; };
+		B69DFC5323709294009A1774 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		B6CB758E2346549E00393735 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 		1FA43BD1224E569900F565CB /* CountOnMe */ = {
 			isa = PBXGroup;
 			children = (
+				B69DFC5223709278009A1774 /* Extention */,
 				B679338F23450094002A4FA2 /* Supporting Files */,
 				B679338E2345008A002A4FA2 /* Controller */,
 				B679338D23450082002A4FA2 /* View */,
@@ -131,6 +134,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		B69DFC5223709278009A1774 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				B69DFC5323709294009A1774 /* String.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -141,7 +152,6 @@
 				1FA43BCB224E569900F565CB /* Sources */,
 				1FA43BCC224E569900F565CB /* Frameworks */,
 				1FA43BCD224E569900F565CB /* Resources */,
-				B685765C236F0456002EC4A5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -229,26 +239,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		B685765C236F0456002EC4A5 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		1FA43BCB224E569900F565CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -256,6 +246,7 @@
 			files = (
 				1FA43BD5224E569900F565CB /* ViewController.swift in Sources */,
 				1FA43BD3224E569900F565CB /* AppDelegate.swift in Sources */,
+				B69DFC5423709294009A1774 /* String.swift in Sources */,
 				B6CB758F2346549E00393735 /* Calculator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

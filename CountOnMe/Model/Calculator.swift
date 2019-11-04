@@ -7,13 +7,18 @@
 
 import Foundation
 
-class Calculator {
+final class Calculator {
     weak var delegateDisplay: DisplayDelegate?
+
     // MARK: - Property
+
     var textCalculator = "" {
         didSet {
             notificationDisplay(textCalculator: textCalculator)
         }
+    }
+    private var textCalculatorDoubled: String {
+        return textCalculator.split(separator: " ").map { String("\($0)".isNumber ? "\(Double($0)!)" : $0) }.joined(separator: " ")
     }
     var elements: [String] {
         return textCalculator.split(separator: " ").map { "\($0)" }
@@ -36,20 +41,22 @@ class Calculator {
         return !textCalculator.contains("/ 0")
     }
 }
+
 // MARK: - numbers and operand Function's
+
 extension Calculator {
-    // Send notification to viewController
+    /// Send notification to viewController
     func notificationDisplay(textCalculator: String) {
         delegateDisplay?.presentDisplay(text: textCalculator)
     }
-    // Add Numbers
+    /// Add Numbers
     func tappedNumberButton(numberText: String) {
         if expressionHaveResult {
             textCalculator = ""
         }
         textCalculator.append(numberText)
     }
-    // Add Plus Operand
+    /// Add Plus Operand
     func tappedAdditionButton() {
         if canAddOperator {
             textCalculator.append(" + ")
@@ -57,7 +64,7 @@ extension Calculator {
             delegateDisplay?.presentAlert(message: "Un operateur est déja mis !")
         }
     }
-    // Add Minus Operand
+    /// Add Minus Operand
     func tappedSubstractionButton() {
         if canAddOperator {
             textCalculator.append(" - ")
@@ -65,7 +72,7 @@ extension Calculator {
             delegateDisplay?.presentAlert(message: "Un operateur est déja mis !")
         }
     }
-    // Add Multiplicate Operand
+    /// Add Multiplicate Operand
     func tappedMultiplicateButton() {
         if canAddOperator {
             textCalculator.append(" * ")
@@ -73,7 +80,7 @@ extension Calculator {
             delegateDisplay?.presentAlert(message: "Un operateur est déja mis !")
         }
     }
-    // Add Divide Operand
+    /// Add Divide Operand
     func tappedDivideButton() {
         if canAddOperator {
             textCalculator.append(" / ")
@@ -81,12 +88,14 @@ extension Calculator {
             delegateDisplay?.presentAlert(message: "Un operateur est déja mis !")
         }
     }
-    // Reset function
+    /// Reset function
     func resetButton() {
         textCalculator = ""
     }
 }
+
 // MARK: - Result Function
+
 extension Calculator {
     func operationResult() {
         guard expressionIsCorrect else {
@@ -102,25 +111,22 @@ extension Calculator {
             textCalculator = "= Error"
             return
         }
-        convertStringToFloat()
-        guard let result = NSExpression(format: textCalculator).expressionValue(with: nil, context: nil) else { return }
-        textCalculator = ("= \(result)")
+        guard let result = NSExpression(format: textCalculatorDoubled).expressionValue(with: nil, context: nil) as? Double else { return }
+        textCalculator = ("= \(stringFormater(result: result))")
     }
-    // Function to convert String To Float
-    private func convertStringToFloat() {
-        var stringTmp = [String]()
-        for element in elements {
-            if element == "+" || element == "-" || element == "/" || element == "*" {
-                stringTmp.append(element)
-            } else {
-                let floatNumber = String(format: "%.2f", (element as NSString).floatValue)
-                stringTmp.append(floatNumber)
-            }
-        }
-        textCalculator = stringTmp.joined(separator: " ")
+
+    /// Function to convert String To Double
+    private func stringFormater(result: Double) -> String {
+        let formater = NumberFormatter()
+        formater.minimumFractionDigits = 0
+        formater.maximumFractionDigits = 3
+        guard let valueFormated = formater.string(from: NSNumber(value: result)) else { return "" }
+        return valueFormated
     }
 }
+
 // MARK: - Alert Display Protocol
+
 protocol DisplayDelegate: class {
     func presentDisplay(text: String)
     func presentAlert(message: String)
