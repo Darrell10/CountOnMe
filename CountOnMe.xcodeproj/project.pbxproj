@@ -81,7 +81,7 @@
 		1FA43BD1224E569900F565CB /* CountOnMe */ = {
 			isa = PBXGroup;
 			children = (
-				B69DFC5223709278009A1774 /* Extention */,
+				B69DFC5223709278009A1774 /* Extension */,
 				B679338F23450094002A4FA2 /* Supporting Files */,
 				B679338E2345008A002A4FA2 /* Controller */,
 				B679338D23450082002A4FA2 /* View */,
@@ -134,12 +134,12 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B69DFC5223709278009A1774 /* Extention */ = {
+		B69DFC5223709278009A1774 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				B69DFC5323709294009A1774 /* String.swift */,
 			);
-			path = Extention;
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
