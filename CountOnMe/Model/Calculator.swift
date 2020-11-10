@@ -108,11 +108,11 @@ extension Calculator {
         }
         guard divideByZero else {
             delegateDisplay?.presentAlert(message: "Division par zéro impossible !")
-            textCalculator = "= Error"
+            textCalculator = "Error"
             return
         }
         guard let result = NSExpression(format: textCalculatorDoubled).expressionValue(with: nil, context: nil) as? Double else { return }
-        textCalculator = ("= \(stringFormater(result: result))")
+        textCalculator = ("\(stringFormater(result: result))")
     }
 
     /// Function to convert String To Double
